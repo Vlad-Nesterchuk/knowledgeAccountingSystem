@@ -1,0 +1,26 @@
+[
+  {
+    "idArea": 1,
+    "areaName": "Html"
+  },
+  {
+    "idArea": 2,
+    "areaName": "CSS"
+  },
+  {
+    "idArea": 3,
+    "areaName": "JavaScript"
+  },
+  {
+    "idArea": 4,
+    "areaName": "Git"
+  },
+  {
+    "idArea": 5,
+    "areaName": "React"
+  },
+  {
+    "idArea": 6,
+    "areaName":"Angular"
+  }
+]

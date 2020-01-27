@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DevBase</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+<body class="body">
+  <header class="header">
+    <div class="header__logo logo">
+      <a href="./">
+        <img src="./img/logo.svg" alt="logo">
+      </a>
+    </div>
+    <div class="search">
+    </div>
+    <nav class="top-nav">
+          <div class="top-nav__nav-item">
+            <a class="top-nav__nav-link " href="#About">About</a>
+          </div>
+          <div class="top-nav__nav-item">
+            <a class="top-nav__nav-link sub-link">Developer</a>
+            <ul class="top-nav__submenu">
+              <li class="top-nav__submenu-item">
+                <a class="top-nav__nav-link" href="#NewDeveloper">New developer</a>
+              </li>
+              <li class="top-nav__submenu-item">
+                <a class="top-nav__nav-link" href="#DevelopersList">Developers list</a>
+              </li>
+            </ul>
+          </div>
+          <div class="top-nav__nav-item">
+            <a class="top-nav__nav-link" href="#SkillsDirectory">Skills Directory</a>
+          </div>
+        </nav>
+  </header>
+  <div class="slider-warp">
+    <div class="slider-trigers">
+      <label class="switch-label" for="switch-slide-one"></label>
+      <label class="switch-label" for="switch-slide-two"></label>
+      <label class="switch-label" for="switch-slide-three"></label>
+    </div>
+    <input id="switch-slide-one" name="slider" class="slider-warp__switch" type="radio" checked>
+    <section class="slide slide-one" >
+      <h2 class="slide__heder">Create your profile</h2>
+    </section>
+    <input id="switch-slide-two" name="slider" class="slider-warp__switch" type="radio">
+    <section class="slide slide-two" >
+      <h2 class="slide__heder">Mark your skills</h2>
+    </section>
+    <input id="switch-slide-three" name="slider" class="slider-warp__switch" type="radio">
+    <section class="slide slide-three" >
+      <h2 class="slide__heder">Build a team</h2>
+    </section>
+  </div>
+  <main class="content">
+  </main>
+  <footer class="footer">
+    <div class="footer__left-warp">
+    </div>
+    <div class="footer__right-warp">
+      <div class="social_networks">
+                    <a class ="social_networks__link" href="https://www.facebook.com/">
+                      <img class="social_networks__icon" src="./img/facebook_icon.svg">
+                    </a>
+                    <a class ="social_networks__link" href="https://instagram.соm/">
+                      <img class="social_networks__icon" src="./img/instagram_icon.svg">
+                    </a>
+                    <a class ="social_networks__link" href="https://twitter.com/">
+                      <img class="social_networks__icon" src="./img/twitter_icon.svg">
+                    </a>
+                    <a class ="social_networks__link" href="https://www.youtube.com/">
+                      <img class="social_networks__icon" src="./img/youtube_icon.svg">
+                    </a>
+                    <a class ="social_networks__link" href="https://telegram.me/">
+                      <img class="social_networks__icon" src="./img/telegram_icon.svg">
+                    </a>
+                </div>
+    </div>
+  </footer>
+  <script src="./js/main.js"></script>
+</body>
+</html>

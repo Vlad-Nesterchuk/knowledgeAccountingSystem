@@ -1,0 +1,292 @@
+.body {
+  margin: 0px;
+  padding-top: 86px;
+  height: 100vh;
+  box-sizing: border-box;
+}
+.header {
+  display: flex;
+  position: fixed;
+  top: 0px;
+  flex-direction: row;
+  align-items: center;
+  background-color: #F4F5FD;
+  margin: 0;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 20px;
+  padding: 10px 20px 10px 20px;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 20;
+}
+.top-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.top-nav__nav-item {
+  position: relative;
+}
+
+.top-nav__nav-link {
+  display: block;
+  margin-top: auto;
+  height: 50px;
+  width: 150px;
+  text-decoration: none;
+  color: #4D4D4D;
+  text-align: center;
+  line-height:50px;
+  font-family: 'Montserrat', sans-serif;
+  margin-left: 5px;
+  transition: background-color 1s;
+}
+
+.top-nav__nav-link:hover {
+  background-color: #008080;
+  color: rgb(255, 255, 255);
+}
+
+.top-nav__submenu {
+  position: absolute;
+  display: none;
+  list-style: none;
+  padding: 0;
+  top: 35px;
+  background-color: #F4F5FD;
+}
+
+.sub-link:hover ~ .top-nav__submenu, .top-nav__submenu:hover { 
+  display: block;
+}
+
+.slider-warp {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.slide {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  bottom: 100%;
+  transition: bottom 0.75s;
+  text-align: center;
+  justify-content: center;
+  background: no-repeat center ;
+}
+
+.slide-one {
+  background-image: url('../img/profile.png');
+}
+
+.slide-two {
+  background-image: url('../img/skills.jpg');
+}
+
+.slide-three {
+  background-image: url('../img/team.png');
+}
+
+.slider-trigers {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  bottom: 30px;
+  left:50%; 
+  margin-left:-111px;
+  z-index: 11;
+}
+
+.slide__heder {
+  height: 40px;
+  color: #008080;
+}
+
+.switch-label {
+  display: block;
+  height: 10px;
+  width: 60px;
+  border: 2px solid #008080;
+  border-radius:2px 2px;
+  background-color: #008080;
+  margin: 0 10px 0 10px;
+}
+
+.switch-label:hover {
+  background-color: #4D4D4D;
+  border-color: #4D4D4D;
+}
+
+.slider-warp__switch {
+  display: none;
+}
+
+.slider-warp__switch:checked + .slide {
+  bottom: 0;
+  z-index: 10;
+  transition: bottom 0,65s ease-out;
+}
+.content {
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 100%;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.developer-form {
+  display: flex;
+  width:80%;
+  min-height: 70vh;
+  text-align: center;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 4px solid #008080;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.developer-form__skill-fieldeset-warp {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.developer-form__skill-fildeset{
+  height: 40px;
+  max-width: 300px;
+  border-style: none;
+  border-width: 2px 2px 2px 20px;
+  border-color: #008080; 
+  border-style: solid;
+  margin: 5px 20px;
+  padding: 0;
+}
+
+.developer-form__skill-fildeset-btn{
+  height: 30px;
+  width: 200px;
+  border: 10px solid #008080;
+  border-radius: 5px;
+  color: white;
+  margin:10px auto 10px auto;
+  background-color: #008080;
+}
+
+.developer-form__submit-div {
+  height: 50px;
+}
+
+.developer-form__btn {
+  width: 50%;
+  height: 100%;
+  background-color: #008080;
+  border: none;
+  border-top: 4px solid #008080;
+  color: white;
+  font-size: 2em;
+}
+
+.developer-form__btn:hover {
+  background-color: white;
+  border-top:4px solid #008080;
+  color: #008080;
+}
+
+.developer-form__btn:focus {
+  outline: none;
+}
+
+.developer-form > h2 {
+  min-height: 60px;
+  background-color: #008080;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 0;
+  line-height: 60px;
+  font-size: 2em;
+}
+
+.developer-form__name-label, 
+.developer-form__nikname-label {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px 0;
+}
+
+.developer-form__name-label > input,
+.developer-form__nikname-label > input {
+  font-size: 2em;
+  margin:0 10% 0 10%;
+}
+
+.developer-form__select-skill-node,
+.developer-form__select-mark-node {
+  height: 100%;
+  font-size: 1.5em;
+  border: none;
+}
+
+.developer-form__select-skill-node:focus,
+.developer-form__select-mark-node:focus {
+  outline: none;
+}
+
+.developer-form__select-skill-node {
+  width: 65%;
+  border-right: 2px solid #008080;
+}
+
+.developer-form__select-mark-node {
+  width: 30%;
+  margin-left: 5px;
+}
+
+.footer {
+ display: flex;
+ flex-direction: row;
+ background-color: #008080;
+ height: 300px;
+ padding-bottom: 20px;
+}
+
+.footer__left-warp,
+.footer__right-warp {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer__right-warp {
+  justify-content: flex-end;
+} 
+
+.footer-logo {
+  background-color: #F4F5FD;;
+}
+
+.social_networks {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.social_networks__link {
+  text-decoration: none;
+}
+
+.social_networks__icon {
+  height: 48px;
+  width: 48px;
+  margin-right: 10px;
+}
+
+.social_networks__icon:hover {
+  background-color: #025050;
+}
+
+
+
