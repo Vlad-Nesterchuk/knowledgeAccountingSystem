@@ -1,6 +1,6 @@
 .body {
   margin: 0px;
-  padding-top: 86px;
+  padding-top: 80px;
   height: 100vh;
   box-sizing: border-box;
 }
@@ -15,6 +15,7 @@
   box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 20px;
   padding: 10px 20px 10px 20px;
   width: 100%;
+  height: 80px;
   box-sizing: border-box;
   z-index: 20;
 }
@@ -74,6 +75,7 @@
   text-align: center;
   justify-content: center;
   background: no-repeat center ;
+  background-size: contain;
 }
 
 .slide-one {
@@ -125,47 +127,168 @@
 .slider-warp__switch:checked + .slide {
   bottom: 0;
   z-index: 10;
-  transition: bottom 0,65s ease-out;
 }
 .content {
-  align-items: center;
-  justify-content: center;
+  background-image: url("../img/aboutus-land.jpg");
   flex-direction: column;
-  min-height: 100%;
+  justify-content: center;
   text-align: center;
-  padding: 20px;
+  min-height: 100%;
+  padding: 0;
   box-sizing: border-box;
+  background-attachment: fixed;
+}
+
+.content-warp[visible = true] {
+  width: 100%;
+  display: flex;
+}
+
+.content-warp[visible = false] {
+  display: none;
+}
+
+.about {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 2em;
+  color: #262626;
+  background-color: rgba(255, 255, 255, 0.26);
+  padding-bottom: 20px;
+}
+
+.about-baner {
+max-width: 900px;
+}
+
+.new-developer {
+  justify-content: center;
+}
+
+.developer-warp_developer-foto {
+  position: absolute;
+  left: 30%;
+  top: -50px;
+  height: 100px;
+  background-color: white;
+  border-radius: 50px;
+  border: 2px solid #008080;
+}
+
+.developers-view {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 20px;
+  padding-top: 40px;
+  justify-content: center;
+}
+
+.developer-warp {
+  background-color: rgb(135, 226, 240);
+  position: relative;
+  width: 100%;
+  max-width: 250px;
+  min-height: 200px;
+  margin: 20px;
+  padding: 10px;
+  padding-top: 20px;
+  font-family: 'Abel', sans-serif;
+  color: #4D4D4D;
+  margin-bottom: 40px;
+}
+
+.developer-warp > h3{
+  font-size: 2em;
+}
+
+.developer-warp__skill-warp{
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 2em;
+}
+
+.developer-warp__skill-item {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.control-panel {
+  height: 100vh;
+  background-color: #F4F5FD;
+  width: 300px;
+  padding-top: 20px;
+  position: sticky;
+  top: 80px;
+}
+.serch {
+  display: flex;
+  justify-content: center;
+} 
+
+.serch-button {
+  box-sizing: border-box;
+  height: 35px;
+  width: 35px;
+  padding: 0;
+  border: 2px solid  #008080; 
+  border-radius: 5px;
+  margin-left: 5px;
+}
+.serch-img {
+  height: 30px;
+  width: 30px;
 }
 
 .developer-form {
   display: flex;
   width:80%;
+  max-width: 800px;
   min-height: 70vh;
   text-align: center;
   flex-direction: column;
   justify-content: space-between;
   border: 4px solid #008080;
   font-family: 'Montserrat', sans-serif;
+  background-color: white;
 }
 
 .developer-form__skill-fieldeset-warp {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
+  margin: 0 10px;
+  background-color: #F4F5FD;
 }
 
-.developer-form__skill-fildeset{
-  height: 40px;
-  max-width: 300px;
-  border-style: none;
-  border-width: 2px 2px 2px 20px;
+.developer-form__skill-fildeset {
+  position: relative;
+  border-width: 2px 2px;
   border-color: #008080; 
   border-style: solid;
-  margin: 5px 20px;
-  padding: 0;
+  margin:5px 44px 0 0 ;
 }
 
-.developer-form__skill-fildeset-btn{
+.developer-form__remove-skill-fieldeset {
+  position: absolute;
+  top: -2px;
+  right: -44px;
+  height: 100%;
+  border: 2px solid #008080;
+  width: 40px;
+  color: white;
+  background-color: #008080;
+  background-image: url('../img/removet.svg');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.developer-form__skill-fildeset-btn {
   height: 30px;
   width: 200px;
   border: 10px solid #008080;
@@ -224,8 +347,7 @@
 
 .developer-form__select-skill-node,
 .developer-form__select-mark-node {
-  height: 100%;
-  font-size: 1.5em;
+  font-size: 2em;
   border: none;
 }
 
@@ -234,14 +356,9 @@
   outline: none;
 }
 
-.developer-form__select-skill-node {
-  width: 65%;
-  border-right: 2px solid #008080;
-}
-
 .developer-form__select-mark-node {
-  width: 30%;
-  margin-left: 5px;
+  width: 60px;
+  float: right;
 }
 
 .footer {

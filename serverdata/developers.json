@@ -1,47 +1,250 @@
 [
   {
-    "idDeveloper":1,
-    "name":"Ivan",
-    "knowledges":{
-      "2":"2",
-      "3":"4",
-      "5":"5"
-    }
+    "idDeveloper": 1,
+    "name": "Ivan",
+    "nikname": "Ivan1",
+    "knowledgesMarks": [
+      {
+        "idKowledge": "2",
+        "mark": "5"
+      },
+      {
+        "idKowledge": "3",
+        "mark": "3"
+      }
+    ]
   },
   {
-    "idDeveloper":2,
-    "name":"Dima",
-    "knowledges":{
-      "1":"2",
-      "2":"4",
-      "3":"6"
-    }
+    "idDeveloper": 2,
+    "name": "Dima",
+    "nikname": "Dima2",
+    "knowledgesMarks": [
+      {
+        "idKowledge": "1",
+        "mark": "4"
+      },
+      {
+        "idKowledge": "3",
+        "mark": "5"
+      },
+      {
+        "idKowledge": "4",
+        "mark": "3"
+      }
+    ]
   },
   {
-    "idDeveloper":3,
-    "name":"Kolya",
-    "knowledges":{
-      "1":"2",
-      "3":"4",
-      "5":"6"
-    }
+    "idDeveloper": 3,
+    "name": "Kolya",
+    "nikname": "Kolya3",
+    "knowledgesMarks": [
+      {
+        "idKowledge": "2",
+        "mark": "4"
+      },
+      {
+        "idKowledge": "4",
+        "mark": "5"
+      },
+      {
+        "idKowledge": "5",
+        "mark": "3"
+      }
+    ]
   },
   {
-    "idDeveloper":4,
-    "name":"Taras",
-    "knowledges":{
-      "1":"2",
-      "3":"4",
-      "5":"6"
-    }
+    "idDeveloper": 4,
+    "name": "Taras",
+    "nikname": "Taras4",
+    "knowledgesMarks": [
+      {
+        "idKowledge": "1",
+        "mark": "5"
+      },
+      {
+        "idKowledge": "4",
+        "mark": "5"
+      },
+      {
+        "idKowledge": "3",
+        "mark": "2"
+      }
+    ]
   },
   {
-    "idDeveloper":5,
-    "name":"Fedor",
-    "knowledges":{
-      "4":"2",
-      "2":"4",
-      "3":"6"
-    }
+    "idDeveloper": 5,
+    "name": "Fedor",
+    "nikname": "Fedor5",
+    "knowledgesMarks": [
+      {
+        "idKowledge": "4",
+        "mark": "4"
+      },
+      {
+        "idKowledge": "3",
+        "mark": "2"
+      },
+      {
+        "idKowledge": "2",
+        "mark": "5"
+      }
+    ]
+  },
+  {
+    "idDeveloper": 6,
+    "name": "Taras",
+    "nikname": "Taras456",
+    "knowledgesMarks": [
+      {
+        "idKowledge": "2",
+        "mark": "2"
+      },
+      {
+        "idKowledge": "1",
+        "mark": "3"
+      },
+      {
+        "idKowledge": "6",
+        "mark": "5"
+      },
+      {
+        "idKowledge": "5",
+        "mark": "5"
+      }
+    ]
+  },
+  {
+    "idDeveloper": 7,
+    "name": "Artur",
+    "nikname": "Yarmack",
+    "knowledgesMarks": [
+      {
+        "idKowledge": "4",
+        "mark": "4"
+      },
+      {
+        "idKowledge": "1",
+        "mark": "3"
+      },
+      {
+        "idKowledge": "2",
+        "mark": "2"
+      },
+      {
+        "idKowledge": "3",
+        "mark": "2"
+      }
+    ]
+  },
+  {
+    "idDeveloper": 8,
+    "name": "Anton",
+    "nikname": "Anton156",
+    "knowledgesMarks": [
+      {
+        "idKowledge": "2",
+        "mark": "2"
+      },
+      {
+        "idKowledge": "5",
+        "mark": "3"
+      },
+      {
+        "idKowledge": "3",
+        "mark": "5"
+      },
+      {
+        "idKowledge": "4",
+        "mark": "5"
+      }
+    ]
+  },
+  {
+    "idDeveloper": 9,
+    "name": "Petro",
+    "nikname": "Apet56",
+    "knowledgesMarks": [
+      {
+        "idKowledge": "1",
+        "mark": "4"
+      },
+      {
+        "idKowledge": "5",
+        "mark": "3"
+      },
+      {
+        "idKowledge": "3",
+        "mark": "4"
+      },
+      {
+        "idKowledge": "4",
+        "mark": "5"
+      }
+    ]
+  },
+  {
+    "idDeveloper": 12,
+    "name": "Mishuk Nazar",
+    "nikname": "MishNaz",
+    "knowledgesMarks": [
+      {
+        "idKowledge": "6",
+        "mark": "2"
+      },
+      {
+        "idKowledge": "5",
+        "mark": "2"
+      },
+      {
+        "idKowledge": "4",
+        "mark": "1"
+      },
+      {
+        "idKowledge": "3",
+        "mark": "4"
+      }
+    ]
+  },
+  {
+    "idDeveloper": 13,
+    "name": "Oleg Tarasenko",
+    "nikname": "sef144",
+    "knowledgesMarks": [
+      {
+        "idKowledge": "4",
+        "mark": "3"
+      },
+      {
+        "idKowledge": "2",
+        "mark": "2"
+      },
+      {
+        "idKowledge": "1",
+        "mark": "4"
+      },
+      {
+        "idKowledge": "5",
+        "mark": "4"
+      },
+      {
+        "idKowledge": "6",
+        "mark": "5"
+      }
+    ]
+  },
+  {
+    "idDeveloper": 14,
+    "name": "Olga Giliuta",
+    "nikname": "olia",
+    "knowledgesMarks": [
+      {
+        "idKowledge": "2",
+        "mark": "3"
+      },
+      {
+        "idKowledge": "3",
+        "mark": "4"
+      }
+    ]
   }
 ]

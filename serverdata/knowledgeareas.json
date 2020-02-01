@@ -1,26 +1,26 @@
-[
+[ 
   {
-    "idArea": 1,
-    "areaName": "Html"
+    "idKowledge": 1,
+    "knowledgeName": "Html"
   },
   {
-    "idArea": 2,
-    "areaName": "CSS"
+    "idKowledge": 2,
+    "knowledgeName": "CSS"
   },
   {
-    "idArea": 3,
-    "areaName": "JavaScript"
+    "idKowledge": 3,
+    "knowledgeName": "JavaScript"
   },
   {
-    "idArea": 4,
-    "areaName": "Git"
+    "idKowledge": 4,
+    "knowledgeName": "Git"
   },
   {
-    "idArea": 5,
-    "areaName": "React"
+    "idKowledge": 5,
+    "knowledgeName": "React"
   },
   {
-    "idArea": 6,
-    "areaName":"Angular"
+    "idKowledge": 6,
+    "knowledgeName":"Angular"
   }
 ]

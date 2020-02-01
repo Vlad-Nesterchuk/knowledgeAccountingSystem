@@ -7,6 +7,8 @@
   <title>DevBase</title>
   <link rel="stylesheet" href="./css/style.css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand|Source+Sans+Pro&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Abel&display=swap" rel="stylesheet">
 </head>
 <body class="body">
   <header class="header">
@@ -19,21 +21,21 @@
     </div>
     <nav class="top-nav">
           <div class="top-nav__nav-item">
-            <a class="top-nav__nav-link " href="#About">About</a>
+            <a class="top-nav__nav-link " href="#about">About</a>
           </div>
           <div class="top-nav__nav-item">
             <a class="top-nav__nav-link sub-link">Developer</a>
             <ul class="top-nav__submenu">
               <li class="top-nav__submenu-item">
-                <a class="top-nav__nav-link" href="#NewDeveloper">New developer</a>
+                <a class="top-nav__nav-link" href="#new-developer">New developer</a>
               </li>
               <li class="top-nav__submenu-item">
-                <a class="top-nav__nav-link" href="#DevelopersList">Developers list</a>
+                <a class="top-nav__nav-link" href="#developers-list">Developers list</a>
               </li>
             </ul>
           </div>
           <div class="top-nav__nav-item">
-            <a class="top-nav__nav-link" href="#SkillsDirectory">Skills Directory</a>
+            <a class="top-nav__nav-link" href="#skills-directory">Skills Directory</a>
           </div>
         </nav>
   </header>
@@ -57,28 +59,74 @@
     </section>
   </div>
   <main class="content">
+    <section class="content-warp about" visible ="false">
+      <div class="about-baner">
+        <div class="about-baner__main">
+          <img src="./img/logo2.svg" alt="logo">
+          <h1 class="about__heder">About Devbase</h1>
+          <p> Welcome to Devebase, a small application to help build a 
+          professional team!
+        </p>
+        </div>
+        <h2 class="about__heder">Our mission</h2>
+        <p>Gather the right people in the right place 
+          to solve complex problems
+        </p>
+        
+      </div>
+        <div>
+          <h3>Our location</h3>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2540.8175463403304!2d30.439235025707145!3d50.44449905557347!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cc22152c1bbf%3A0x2f2390eb35c398e!2z0KjRg9C70Y_QstC60LAsINCa0LjQtdCyLCAwMjAwMA!5e0!3m2!1sru!2sua!4v1580400755597!5m2!1sru!2sua" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+        </div>
+    </section>
+    <section class="content-warp new-developer" visible ="false" >
+    </section>
+    <section class="content-warp developers-list" visible ="false">
+      <aside class="control-panel">
+          <div class="control-panel__serch-warp">
+            <div class="serch">
+              <input type="search" placeholder="search">
+              <button class="serch-button"><img class="serch-img" src="./img/serch.svg" alt=""></button>
+            </div>
+          </div>
+          <hr>
+          <div class="control-panel__filters-warp">
+           <h3>filters by:</h3>
+           
+          </div>
+          <hr>
+          <div class="control-panel__sorting-warp">
+            <h3>sorted by:</h3>
+          </div>
+      </aside>
+      <div class="developers-view">
+      
+      </div>
+    </section>
+    <section class="content-warp skills-directory" visible ="false">
+    </section>
   </main>
   <footer class="footer">
     <div class="footer__left-warp">
     </div>
     <div class="footer__right-warp">
       <div class="social_networks">
-                    <a class ="social_networks__link" href="https://www.facebook.com/">
-                      <img class="social_networks__icon" src="./img/facebook_icon.svg">
-                    </a>
-                    <a class ="social_networks__link" href="https://instagram.соm/">
-                      <img class="social_networks__icon" src="./img/instagram_icon.svg">
-                    </a>
-                    <a class ="social_networks__link" href="https://twitter.com/">
-                      <img class="social_networks__icon" src="./img/twitter_icon.svg">
-                    </a>
-                    <a class ="social_networks__link" href="https://www.youtube.com/">
-                      <img class="social_networks__icon" src="./img/youtube_icon.svg">
-                    </a>
-                    <a class ="social_networks__link" href="https://telegram.me/">
-                      <img class="social_networks__icon" src="./img/telegram_icon.svg">
-                    </a>
-                </div>
+        <a class ="social_networks__link" href="https://www.facebook.com/">
+          <img class="social_networks__icon" src="./img/facebook_icon.svg">
+        </a>
+        <a class ="social_networks__link" href="https://instagram.соm/">
+          <img class="social_networks__icon" src="./img/instagram_icon.svg">
+        </a>
+        <a class ="social_networks__link" href="https://twitter.com/">
+          <img class="social_networks__icon" src="./img/twitter_icon.svg">
+        </a>
+        <a class ="social_networks__link" href="https://www.youtube.com/">
+          <img class="social_networks__icon" src="./img/youtube_icon.svg">
+        </a>
+        <a class ="social_networks__link" href="https://telegram.me/">
+          <img class="social_networks__icon" src="./img/telegram_icon.svg">
+        </a>
+        </div>
     </div>
   </footer>
   <script src="./js/main.js"></script>
