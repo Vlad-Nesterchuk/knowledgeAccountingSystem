@@ -180,15 +180,24 @@ max-width: 900px;
 
 .developers-view {
   width: 100%;
-  display: flex;
+  position: relative;
+  display: grid;
   flex-direction: row;
   flex-wrap: wrap;
   padding: 20px;
   padding-top: 40px;
   justify-content: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows:1fr 1fr;
+}
+
+.developers-view[visible = false] {
+  visibility:hidden;
 }
 
 .developer-warp {
+  display: flex;
+  flex-direction: column;
   background-color: rgb(135, 226, 240);
   position: relative;
   width: 100%;
@@ -196,20 +205,25 @@ max-width: 900px;
   min-height: 200px;
   margin: 20px;
   padding: 10px;
-  padding-top: 20px;
+  padding-top: 10%;
   font-family: 'Abel', sans-serif;
   color: #4D4D4D;
   margin-bottom: 40px;
+  font-size: 2em;
+}
+
+.developer-warp[visible = false] {
+  display: none;
 }
 
 .developer-warp > h3{
-  font-size: 2em;
+  margin: 5%
 }
 
 .developer-warp__skill-warp{
   display: flex;
   flex-wrap: wrap;
-  font-size: 2em;
+ 
 }
 
 .developer-warp__skill-item {
@@ -217,6 +231,32 @@ max-width: 900px;
   display: flex;
   justify-content: space-between;
 }
+
+.pagination-button-warp {
+  position: absolute;
+  width: 100%;
+  height: max-content;
+  bottom: 0;
+}
+
+.pagination-button-warp > a {
+  display: inline-block;
+  justify-content: center;
+  text-align: center;
+  height: 40px;
+  width: 40px;
+  font-size: 2em;
+  background-color: #008080;
+  text-decoration: none;
+  margin: 10px;
+  line-height: 40px;
+  color: #F4F5FD;
+}
+
+.pagination-button-warp > a:hover{
+  background-color: #085858;
+}
+
 .control-panel {
   height: 100vh;
   background-color: #F4F5FD;
@@ -404,6 +444,4 @@ max-width: 900px;
 .social_networks__icon:hover {
   background-color: #025050;
 }
-
-
 

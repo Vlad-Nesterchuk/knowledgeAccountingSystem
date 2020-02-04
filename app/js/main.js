@@ -1,8 +1,8 @@
 
 window.onload = async() => {
-  if ( window.location.hash.replace('#','') != '' ) {
+  if ( window.location.hash.match(/((?<=#).+(?=\?))|(((?<=#).+(?=$)))/)[0]) {
     showContent( true ); 
-    renderDirectory( window.location.hash.replace('#',''));
+    renderDirectory(window.location.hash.match(/((?<=#).+(?=\?))|(((?<=#).+(?=$)))/)[0]);
   }
   else {
     showContent( false );
@@ -10,8 +10,9 @@ window.onload = async() => {
 }
 
 window.addEventListener ( 'hashchange', () => { 
-  showContent(window.location.hash.replace('#','') !=  ''); 
-  renderDirectory( window.location.hash.replace('#',''));
+  let heshReg = /((?<=#).+(?=\?))|(((?<=#).+(?=$)))/;
+  showContent(window.location.hash.match(heshReg)[0]);
+  renderDirectory(window.location.hash.match(heshReg)[0]);
 });
 
 
@@ -24,7 +25,7 @@ function showContent ( isShow ) {
     conteentBox.style.display = 'flex';
     let contentWarps = document.querySelectorAll('.content-warp');
     contentWarps.forEach(element => {
-      if (element.classList.contains(window.location.hash.replace('#',''))){
+      if (element.classList.contains(window.location.hash.match(/((?<=#).+(?=\?))|(((?<=#).+(?=$)))/)[0])){
         element.setAttribute('visible', 'true');
       }
       else {
@@ -41,6 +42,7 @@ function showContent ( isShow ) {
 
 
 function renderDirectory ( hash ) {
+  
   if ( hash == 'new-developer' ) {
     renderNewDeveloperDirectory().then(
       (devDir) => {
@@ -63,11 +65,22 @@ async function renderDeveloperListDirectory(){
   let developers = new Developers(dataList);
   let developersView = document.querySelector('.developers-view');
   developersView.innerHTML='';
+  developersView.setAttribute('visible','false');
   for (const developer of developers.getDevelopersList()) {
     developersView.appendChild(await renderDeveloperWarp(developer))
   }
-
-
+  let paginationWarp = document.createElement('div');
+  paginationWarp.classList.add('pagination-button-warp');
+  paginationUrlList = pagination(document.getElementsByClassName('developer-warp'));
+  for (const paginationUrl of paginationUrlList) {
+    paginationLink = document.createElement("a");
+    paginationLink.setAttribute('href',paginationUrl);
+    linkText = paginationUrl.match(/((?<=page=).+(?=\&))|(((?<=page=).+(?=$)))/);
+    paginationLink.textContent  = linkText[0];
+    paginationWarp.appendChild(paginationLink);
+  }
+  developersView.appendChild(paginationWarp);
+  developersView.setAttribute('visible','true');
   async function renderDeveloperWarp(developer) {
     let developerWarp = document.createElement('div');
     developerWarp.classList.add('developer-warp');
@@ -305,3 +318,29 @@ class Developers {
   }
 }
 
+function pagination(elementsList) {
+  let currentPage = window.location.hash.match(/((?<=page=).+(?=\&))|(((?<=page=).+(?=$)))/);
+  let curentHash = window.location.hash.match(/(#.+(?=\?))|((#.+(?=$)))/)[0];
+  let numberItemsOnPage = 6;
+  let numberOfPages = Math.ceil(elementsList.length / numberItemsOnPage);
+  if (currentPage == null){
+    currentPage = 1;
+    window.location.hash += "?page=1";
+  } 
+  else {
+    currentPage = currentPage[0];
+  }
+  let firstElement = ((Number(currentPage)-1)*numberItemsOnPage+1);
+  for(let i = 0; i < elementsList.length; ++i) {
+    if (i+1>=firstElement && i<=firstElement+numberItemsOnPage-2){
+      elementsList.item(i).setAttribute('visible','true');
+    }
+    else {
+      elementsList.item(i).setAttribute('visible','false');
+    }
+  }
+  let idPageList = [...(new Set ([1,currentPage-1,+currentPage,1+Number(currentPage),numberOfPages].filter(item => {return item>=1&&item<=numberOfPages})))];
+  
+  urlList = idPageList.map((item) => item =`${curentHash}?page=${item}`);
+  return urlList;
+}
