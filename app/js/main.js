@@ -1,21 +1,93 @@
 
 window.onload = async() => {
-  if ( window.location.hash.match(/((?<=#).+(?=\?))|(((?<=#).+(?=$)))/)[0]) {
+  if ( window.location.hash.match(/((?<=#).+(?=\?))|(((?<=#).+(?=$)))/)) {
     showContent( true ); 
-    renderDirectory(window.location.hash.match(/((?<=#).+(?=\?))|(((?<=#).+(?=$)))/)[0]);
+    await renderDirectory(window.location.hash.match(/((?<=#).+(?=\?))|(((?<=#).+(?=$)))/)[0]);
   }
   else {
     showContent( false );
   }
+  let searchBtn = document.querySelector('.serch-button');
+  searchBtn.addEventListener('click',async ()=> {
+    let hashHandler = new HashHandler();
+    let serchInput = document.querySelector('.serch-input');
+    hashHandler.setHashParameter({'search':serchInput.value},true);
+  })
 }
 
-window.addEventListener ( 'hashchange', () => { 
-  let heshReg = /((?<=#).+(?=\?))|(((?<=#).+(?=$)))/;
-  showContent(window.location.hash.match(heshReg)[0]);
-  renderDirectory(window.location.hash.match(heshReg)[0]);
+window.addEventListener("developersViewChanged",() => {
+  let hashHandler = new HashHandler();
+  let paginationWarp = document.createElement('div');
+  paginationWarp.classList.add('pagination-button-warp');
+  pagesParametersList = pagination(document.getElementsByClassName('developer-warp'),hashHandler.currentPage());
+  for (const pageParameter of pagesParametersList) {
+    let paginationLink = document.createElement("a");
+    paginationLink.setAttribute('href',`#${hashHandler.setHashParameter(pageParameter, false)}`);
+    let linkText = pageParameter.page;
+    paginationLink.textContent  = linkText[0];
+    paginationWarp.appendChild(paginationLink);
+  }
+  let developersView = document.querySelector('.developers-view');
+  developersView.appendChild(paginationWarp);
+})
+
+window.addEventListener ( 'hashchange', async() => { 
+  let hashHandler2 = new HashHandler();
+  await renderDirectory(hashHandler2.getDirectoryName(), hashHandler2.getParameters());
+  showContent(hashHandler2.getDirectoryName());
 });
 
 
+function HashHandler() {
+  this.hash = window.location.hash;
+  this.directoryHashReg = /((?<=#).+(?=\?))|(((?<=#).+(?=$)))/;
+  this.parametersHashReg = /(?<=\?).+(?<=)/;
+  this.currentPageReg = /((?<=page=).+(?=\&))|(((?<=page=).+(?=$)))/;
+  this.getDirectoryName = function() {
+    let directoryName = window.location.hash.match(this.directoryHashReg);
+    return directoryName[0];
+  }
+  this.getParameters = function() {
+    let parametersRagResult = this.hash.match(this.parametersHashReg);
+    if (parametersRagResult == undefined){
+      return parametersRagResult;
+    }
+    let parametersArray = parametersRagResult[0].split("&");
+    let parameters = {};
+    parametersArray.forEach(stringParameter => {
+      stringParameter = stringParameter.split('=');
+      parameters[stringParameter[0]] = stringParameter[1];
+    })
+    return parameters
+  }
+  this.setHashParameter = function(parameters, isChangeLocationHash) {
+    let newHash = this.getDirectoryName() + "?";
+    let oldParametres = this.getParameters();
+    if (oldParametres == undefined){
+      oldParametres = {};
+    }
+    for (const key in parameters) {
+      oldParametres[key] = parameters[key];
+    };
+    for (const key in oldParametres) {
+      newHash += `${key}=${oldParametres[key]}&`;
+    }
+    newHash = newHash.slice(0,newHash.length-1);
+    this.hash = newHash;
+    if (isChangeLocationHash){
+      window.location.hash = newHash;
+    }
+    return this.hash
+  }
+  this.currentPage = function () {
+    let currentPageRegResult = this.hash.match(this.currentPageReg);
+    let pageNumber = currentPageRegResult == undefined ? 1 : currentPageRegResult[0];
+    return pageNumber;
+  }
+  this.getHost = function () {
+    return window.location.host;
+  }
+}
 
 function showContent ( isShow ) {
   let slider = document.querySelector('.slider-warp');
@@ -39,9 +111,7 @@ function showContent ( isShow ) {
   }
 }
 
-
-
-function renderDirectory ( hash ) {
+async function renderDirectory ( hash, parameters ) {
   
   if ( hash == 'new-developer' ) {
     renderNewDeveloperDirectory().then(
@@ -55,32 +125,47 @@ function renderDirectory ( hash ) {
       });
   } 
   else if ( hash == 'developers-list') {
-    renderDeveloperListDirectory();
+    await developerListControler(parameters); 
   } 
   
 }
 
-async function renderDeveloperListDirectory(){
+
+async function developerListControler(controlerParam){
   let dataList = await getDataList ('./developers');
   let developers = new Developers(dataList);
+  if(controlerParam == undefined) {
+    await renderDeveloperListDirectory(developers.getDevelopersList());
+  }
+  else {
+    
+    for (const key in controlerParam) {
+      if (controlerParam.hasOwnProperty(key)) {
+        switch(key){
+          case "search":
+            developers = new Developers(developers.getDevelopersByName(controlerParam[key])) ;
+            break
+        }
+        
+      }
+    }
+    await renderDeveloperListDirectory(developers.getDevelopersList());
+  }
+}
+
+
+
+async function renderDeveloperListDirectory(developers){
   let developersView = document.querySelector('.developers-view');
   developersView.innerHTML='';
   developersView.setAttribute('visible','false');
-  for (const developer of developers.getDevelopersList()) {
-    developersView.appendChild(await renderDeveloperWarp(developer))
+  for (const developer of developers) {
+    developersView.appendChild(await renderDeveloperWarp(developer));
   }
-  let paginationWarp = document.createElement('div');
-  paginationWarp.classList.add('pagination-button-warp');
-  paginationUrlList = pagination(document.getElementsByClassName('developer-warp'));
-  for (const paginationUrl of paginationUrlList) {
-    paginationLink = document.createElement("a");
-    paginationLink.setAttribute('href',paginationUrl);
-    linkText = paginationUrl.match(/((?<=page=).+(?=\&))|(((?<=page=).+(?=$)))/);
-    paginationLink.textContent  = linkText[0];
-    paginationWarp.appendChild(paginationLink);
-  }
-  developersView.appendChild(paginationWarp);
+  let event = new Event("developersViewChanged",{bubbles:true});
+  developersView.dispatchEvent(event);
   developersView.setAttribute('visible','true');
+
   async function renderDeveloperWarp(developer) {
     let developerWarp = document.createElement('div');
     developerWarp.classList.add('developer-warp');
@@ -289,7 +374,7 @@ class Developers {
   }
 
   getDevelopersByName(name) {
-    return this.developersList.filter((developer) => {developer.name == name})
+    return this.developersList.filter((developer) => developer.name.includes(name))
   }
 
   getDevelopersByKnowledgesId(knowledgesIdList) {
@@ -318,17 +403,12 @@ class Developers {
   }
 }
 
-function pagination(elementsList) {
-  let currentPage = window.location.hash.match(/((?<=page=).+(?=\&))|(((?<=page=).+(?=$)))/);
-  let curentHash = window.location.hash.match(/(#.+(?=\?))|((#.+(?=$)))/)[0];
+function pagination(elementsList,currentPage) {
   let numberItemsOnPage = 6;
   let numberOfPages = Math.ceil(elementsList.length / numberItemsOnPage);
-  if (currentPage == null){
+  if (currentPage > numberOfPages) {
     currentPage = 1;
-    window.location.hash += "?page=1";
-  } 
-  else {
-    currentPage = currentPage[0];
+    console.log("currentPage > numberOfPages");
   }
   let firstElement = ((Number(currentPage)-1)*numberItemsOnPage+1);
   for(let i = 0; i < elementsList.length; ++i) {
@@ -340,7 +420,5 @@ function pagination(elementsList) {
     }
   }
   let idPageList = [...(new Set ([1,currentPage-1,+currentPage,1+Number(currentPage),numberOfPages].filter(item => {return item>=1&&item<=numberOfPages})))];
-  
-  urlList = idPageList.map((item) => item =`${curentHash}?page=${item}`);
-  return urlList;
+  return idPageList.map((item) => item = {'page':`${item}`});
 }
